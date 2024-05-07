@@ -13,6 +13,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
     console.log(`Searching... ${term}`);
     // Create a new Instance of URl params
     const params = new URLSearchParams(searchParams);
+    //  reset the page number to 1 when a user searches
+    params.set('page', '1');
     if (term) {
       params.set('query', term);
     } else {
