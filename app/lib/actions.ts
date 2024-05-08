@@ -3,8 +3,10 @@
 import { z } from 'zod';
 // Connect the database
 import { sql } from '@vercel/postgres';
-// Revalidate the data
+// Revalidate the path once the  the database has been updated
 import { revalidatePath } from 'next/cache';
+// Redirect the user back to the earlier path
+import { redirect } from 'next/navigation';
  
 const FormSchema = z.object({
   id: z.string(),
@@ -33,4 +35,6 @@ await sql`
   `;
 //   Clear the cache and make a new request
 revalidatePath('/dashboard/invoices');
+//  redirect the user back to the /dashboard/invoices page
+redirect('/dashboard/invoices');
 }
