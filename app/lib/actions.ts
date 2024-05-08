@@ -3,6 +3,8 @@
 import { z } from 'zod';
 // Connect the database
 import { sql } from '@vercel/postgres';
+// Revalidate the data
+import { revalidatePath } from 'next/cache';
  
 const FormSchema = z.object({
   id: z.string(),
@@ -25,4 +27,10 @@ export async function createInvoice(formData: FormData) {
 //   Create a new date
 const date = new Date().toISOString().split('T')[0];
 // Make a  SQL command to insert data into the database
+await sql`
+    INSERT INTO invoices (customer_id, amount, status, date)
+    VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
+  `;
+//   Clear the cache and make a new request
+revalidatePath('/dashboard/invoices');
 }
