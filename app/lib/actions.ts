@@ -13,12 +13,13 @@ const FormSchema = z.object({
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
  
 export async function createInvoice(formData: FormData) {
-  const rawFormData = {
+    const { customerId, amount, status } = CreateInvoice.parse({
     customerId: formData.get('customerId'),
     amount: formData.get('amount'),
     status: formData.get('status'),
-  };
-  // Test it out:
-  console.log(rawFormData);
-  console.log(typeof rawFormData.amount);
+  });
+  // Store money as cents to eliminate floating points
+  const amountInCents = amount * 100;
+//   Create a new date
+const date = new Date().toISOString().split('T')[0];
 }
