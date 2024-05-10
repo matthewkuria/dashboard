@@ -60,7 +60,7 @@ try{
   WHERE id = ${id}
 `;
 }catch(error){
-  message: 'Database Error: Failed to Create Invoice.',
+  message: 'Database Error: Failed to Create Invoice.'
 
 };
  
