@@ -58,7 +58,7 @@ export async function updateInvoice(id: string, formData: FormData) {
   });
  
   const amountInCents = amount * 100;
- 
+// the function to update the invoice records
 try{
   await sql`
   UPDATE invoices
