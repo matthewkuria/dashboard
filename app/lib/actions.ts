@@ -31,8 +31,6 @@ export type State = {
 };
  
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
- 
-
 export async function createInvoice(prevState: State, formData: FormData) {
      // Validate form fields using Zod
   const validatedFields = CreateInvoice.safeParse({
@@ -51,7 +49,6 @@ export async function createInvoice(prevState: State, formData: FormData) {
   
  // Prepare data for insertion into the database
  const { customerId, amount, status } = validatedFields.data;
- // Store money as cents to eliminate floating points
  const amountInCents = amount * 100;
  const date = new Date().toISOString().split('T')[0];
 // Make a  SQL command to insert data into the database
