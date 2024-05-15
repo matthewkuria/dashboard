@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
  
 export const metadata: Metadata = {
-  title: 'Invoices | Acme Dashboard',
+  title: 'Invoices | Acme Dashboard done by matt',
 };
 import Pagination from '@/app/ui/invoices/pagination';
 import Search from '@/app/ui/search';
