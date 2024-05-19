@@ -1,3 +1,6 @@
+import CustomersTable from "@/app/ui/customers/table"
 export default function Page() {
-    return <p> Customers Page Goes Here</p>;
+    return(
+
+    )
   }
